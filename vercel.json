@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "client/package.json", "use": "@vercel/static-build" },
+    { "src": "server/**/*.ts", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "server/routes.ts" },
+    { "src": "/(.*)", "dest": "client/dist/$1" }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
